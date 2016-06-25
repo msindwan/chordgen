@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Jura);
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+  font: 11px Jura;
+  background: #f3f3f3;
+}
+
+.logo-g {
+  color: #277068;
+}
+
+#chord_dht path {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.chord-container {
+    margin: auto;
+    width: 992px;
+    display: table;
+    background: white;
+    height: 100%;
+    box-shadow: 0px 1px 1px #a2a2a2;
+    padding: 24px;
+}
+
+#chord_dht {
+    margin: auto;
+    display: block;
+}
+
+.chord-dht-title {
+    font-size: 36px;
+}
+
+.chord-dht {
+  min-height: 600px;
+}
+
+.chord {
+  opacity: 0.9;
+}
+
+.peer {
+  display:inline-block;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 50%;
+  background: #50A17E;
+  width: 10px;
+  height: 10px;
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.peer.inactive {
+  opacity: 0.6;
+}
+
+.chord-dht-peers circle,
+.chord-dht-peers text {
+  cursor: default;
+}

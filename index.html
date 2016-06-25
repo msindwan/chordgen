@@ -1,0 +1,113 @@
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="app.css">
+  </head>
+  <body>
+    <div class="chord-container">
+      <div class="chord-dht-title">CHORD<span class="logo-g">GEN</span></div>
+<div class="chord-dht-params">
+  <div class="row" style="
+    /* margin-top: 15px; */
+    /* width: 275px; */
+    background: white;
+    /* position: absolute; */
+    /* right: 325px; */
+    /* box-shadow: 0px 0px 2px 1px #dedede; */
+    /* padding: 10px; */
+    /* border: 1px solid silver; */
+">
+  <div style="
+    display: inline-block;
+">
+<h1 style="
+    font-weight: 100;
+">CHORD DHT PARAMETERS</h1>
+<div class="form-control">
+      <label style="
+    font-size: 30px;
+    display: inline-block;
+    float: left;
+    padding-right: 5px;
+">M</label>
+      <select id="select_m" style="
+    width: 50px;
+    padding: 8px;
+">
+        <option>2</option>
+        <option>3</option>
+        <option selected="selected">4</option>
+        <option>5</option>
+        <option>6</option>
+      </select>
+    </div></div><div style="
+    display: inline-block;
+    /* padding-left: 10px; */
+    float: right;
+">
+<div class="form-control">
+      <label style="
+    font-size: 30px;
+    display: inline-block;
+    float: left;
+    padding-right: 5px;
+">Lookup</label>
+
+
+<input style="
+    width: 50px;
+    padding: 8px;
+"></input>
+  <label style="
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+">at</label>
+<input style="
+    width: 50px;
+    padding: 8px;
+"></input>
+<button style="
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background: white;
+    border: 1px solid silver;
+    font-family: Jura;
+    font-size: 12px;
+">Search</button>
+    </div></div>
+
+<div id="select_peers"></div>
+
+      </div><div id="chord_svg_container" class="chord-dht" style="
+    /* background: white; */
+    margin-top: 20px;
+    border-top: 1px solid silver;
+">
+    <div id="tooltip" style="width: 174px; height: 100px; position: absolute; left: 854px; top: 495px; border-radius: 2px; padding: 10px; color: white; transition: all 0.2s ease; opacity: 0; pointer-events: none; background: rgba(32, 37, 35, 0.811765);">
+  <div class="arrow-right" style="display: none;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #4a4e4c;
+    position: absolute;
+    right: -10px;
+    top: 40px;
+"></div>
+<div class="title" style="
+    font-size: 18px;
+    padding-bottom: 5px;
+">P3 Finger Table</div>
+  <div class="table"><div>1. succ(4) = 4</div><div>2. succ(5) = 5</div><div>3. succ(7) = 7</div><div>4. succ(11) = 11</div><div>5. succ(19) = 19</div><div>6. succ(35) = 35</div></div>
+</div>
+
+
+
+      <svg id="chord_dht" height="600" xmlns:xlink="http://www.w3.org/1999/xlink" width="600"></svg>
+
+
+    <script src="chord.js"></script>
+
+
+</div></body></html>
