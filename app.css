@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Jura);
-
 html,
 body {
     height: 100%;
@@ -7,16 +6,47 @@ body {
 }
 
 body {
-  font: 11px Jura;
-  background: #f3f3f3;
+    font: 11px Jura;
+    background: #f3f3f3;
+}
+
+h1 {
+    font-weight: 100;
+}
+
+label {
+    font-size: 30px;
+    display: inline-block;
+    float: left;
+    padding-right: 5px
+}
+
+input {
+    width: 50px;
+    padding: 8px;
+}
+
+button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background: white;
+    border: 1px solid silver;
+    font-family: Jura;
+    font-size: 12px;
 }
 
 .logo-g {
-  color: #277068;
+    color: #277068;
 }
 
 #chord_dht path {
-  transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#select_m {
+    width: 50px;
+    padding: 8px;
 }
 
 .chord-container {
@@ -39,33 +69,96 @@ body {
 }
 
 .chord-dht {
-  min-height: 600px;
+    min-height: 600px;
+    margin-top: 20px;
+    border-top: 1px solid silver;
 }
 
 .chord {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .peer {
-  display:inline-block;
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 50%;
-  background: #50A17E;
-  width: 10px;
-  height: 10px;
-  color: white;
-  font-size: 10px;
-  text-align: center;
-  margin-right: 2px;
-  cursor: pointer;
+    display: inline-block;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 50%;
+    background: #50A17E;
+    width: 10px;
+    height: 10px;
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    margin-right: 2px;
+    cursor: pointer;
 }
 
 .peer.inactive {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .chord-dht-peers circle,
 .chord-dht-peers text {
-  cursor: default;
+    cursor: default;
+}
+
+.row-container {
+    display: inline-block;
+}
+
+.row-container.lookup {
+    float: right;
+}
+
+.arrow-right {
+    display: none;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #4a4e4c;
+    position: absolute;
+    right: -10px;
+    top: 40px;
+}
+
+#tooltip {
+    width: 174px;
+    height: 100px;
+    position: absolute;
+    border-radius: 2px;
+    padding: 10px;
+    color: white;
+    transition: all 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(32, 37, 35, 0.811765);
+}
+
+#tooltip .title {
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+
+.bb-banner {
+    position: absolute;
+    left: -26px;
+    top: -6px;
+    font-family: sans-serif;
+    color: black;
+    font-size: 11px;
+}
+
+.bb-link {
+    position: relative;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.bb-link:hover span {
+    color: #205081;
+}
+
+.bb-link img {
+    width: 100px;
 }
