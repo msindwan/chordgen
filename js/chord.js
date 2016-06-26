@@ -21,7 +21,12 @@ var network = [];
 function successor(m, p, i, network) {
     var j, k;
 
-    k = (p + Math.pow(2, i - 1)) % Math.pow(2, m);
+    if (i == 0) {
+        k = p;
+    } else {
+        k = (p + Math.pow(2, i - 1)) % Math.pow(2, m);
+    }
+
     j = 0;
 
     while (k > network[j]) {
@@ -75,6 +80,9 @@ function render_graph() {
         }
     }
 
+    document.getElementById('lookup_content_id').setAttribute('max', Math.pow(2, m) - 1);
+    document.getElementById('lookup_peer_id').setAttribute('max', Math.pow(2, m) - 1);
+
     var svg = document.getElementById('chord_dht');
     var emptySvg = svg.cloneNode(false);
     document.getElementById('chord_svg_container').removeChild(svg);
@@ -103,7 +111,9 @@ function render_graph() {
     var group3 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     group.setAttribute('transform', "translate(" + width / 2 + "," + height / 2 + ")");
     group.setAttribute('class', 'chord-dht-peers');
+    group.setAttribute('id', 'chord_dht_peers');
     group3.setAttribute('class', 'chord-dht-peers');
+    group2.setAttribute('id', 'chord_dht_paths');
     svg.appendChild(group2);
     svg.appendChild(group);
     svg.appendChild(group3);
@@ -126,6 +136,7 @@ function render_graph() {
             circle.setAttribute('cx', 0);
             circle.setAttribute('cy', -radius);
             circle.setAttribute('transform', 'rotate(' + deg + ')');
+            circle.setAttribute('data-index', i);
         }
 
         circles.push(circle);
@@ -157,6 +168,7 @@ function render_graph() {
             p.setAttribute("stroke", colours[peer % colours.length]);
             p.setAttribute("stroke-width", "2");
             p.setAttribute("class", peer);
+            p.setAttribute('id', peer + '_' + peer2);
             group2.appendChild(p);
         }
 
@@ -178,6 +190,8 @@ function render_graph() {
 
                 if (path.getAttribute('class') != e.target.getAttribute('data-index')) {
                     path.setAttribute('opacity', '0.1');
+                } else {
+                    path.setAttribute('opacity', '1');
                 }
             }
 
@@ -210,6 +224,8 @@ function render_graph() {
 
                 if (path.getAttribute('class') != e.target.getAttribute('data-index')) {
                     path.setAttribute('opacity', '0.1');
+                } else {
+                    path.setAttribute('opacity', '1');
                 }
             }
 
@@ -259,33 +275,110 @@ document.getElementById("select_m").addEventListener('change', function(e) {
     render_graph();
 });
 
-document.getElementById("lookup_content").addEventListener('click', function(e) {
-    // network [1, 3, 5]
-    // m = 4
+document.getElementById('lookup_peer_id').addEventListener('input', function(e) {
+     var lookup_peer = document.getElementById('lookup_peer_id');
 
+     if (network.indexOf(parseInt(lookup_peer.value, 10)) < 0) {
+        lookup_peer.setCustomValidity("The specified peer does not exist in the network.");
+     } else {
+        lookup_peer.setCustomValidity("");
+     }
+})
 
-    // lookup 3 at 10
+document.getElementById("lookup_content").addEventListener('submit', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    var lookup_content = document.getElementById('lookup_content_id');
+    var lookup_peer = document.getElementById('lookup_peer_id');
+
+    var q = parseInt(lookup_content.value, 10);
+    var p = parseInt(lookup_peer.value, 10);
 
     var yourSelect = document.getElementById("select_m");
     var m = parseInt(yourSelect.options[yourSelect.selectedIndex].value, 10);
 
-    // hide all paths (group 2)
+    var svg = document.getElementById('chord_dht');
+    var group2 = svg.getElementById('chord_dht_paths');
 
-    // start at circle "10" => find circle where text = 10
-    //
-    // while true
-    // if peer == key, break
-    // prev, next;
-    //
-    // for (var i = 0; i < m; i++) {
-    //
-    //      next = 'succ(' + (peer + Math.pow(2, i)) % Math.pow(2, m)) + ') = ' + successor(m, peer, i + 1, network)
-    //      if (next > peer) break;
-    //      prev = next;
-    //
-    //    }
-    // highlight path from last peer to prev (id = <id of node>-<id of target>)
-    // peer = prev;
+    for (var i = 0; i < group2.children.length; i++) {
+        var path = group2.children[i];
+        path.setAttribute('opacity', '0.1');
+    }
+
+    var next;
+    var cur;
+
+    /*while (true) {
+
+        cur = prev; // 4
+
+        for (var i = 0; i < m; i++) {
+            next = successor(m, cur, i + 1, network);
+            if (next > content) break;
+            prev = next;
+        }
+
+        if (cur != prev) {
+            svg.getElementById(cur + '_' + prev).setAttribute('opacity', '1');
+        }
+
+        if (i == 0) {
+            if (next && prev != content && cur != prev) {
+                svg.getElementById(prev + '_' + next).setAttribute('opacity', '1');
+            }
+            break;
+        }
+    }*/
+
+    var succ = successor(m, q, 0, network);
+    var last, next, o;
+
+    o = q;
+
+    function congruence(p, i) {
+        if (p + Math.pow(2, i - 1) >= Math.pow(2, m)) {
+            return successor(m, p, i, network) + Math.pow(2, m);
+        }
+
+        return successor(m, p, i, network);
+    }
+
+    // at most m hops
+    for (var i = 0; i < m; i++) {
+
+        // finding the successor for content; we stop when our next hop is to the successor
+        if (p == succ) break;
+
+        last = p;
+        q = o;
+
+        if (q < p) {
+            q += Math.pow(2, m);
+        } else {
+            q = q % Math.pow(2, m);
+        }
+
+        // TODO
+        if (p < q && q < congruence(p, 1)) {
+            p = successor(m, p, 1, network);
+        } else if (q >= congruence(p, m)) {
+            p = successor(m, p, m, network);
+        } else {
+            for (var j = 0; j < m - 1; j++) {
+                var x1 = congruence(p, j + 1);
+                var x2 = congruence(p, j + 2);
+
+                if (x1 <= q && q < x2) {
+                    p = successor(m, p, j + 1, network);
+                    break;
+                }
+            }
+        }
+
+        svg.getElementById(last + '_' + p).setAttribute('opacity', '1');
+    }
+
 
 });
 

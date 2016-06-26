@@ -18,10 +18,10 @@ cp -r js                 $TEMP_APP_DIR/js
 
 cd $TEMP_APP_DIR
 
-uglifyjs js/chord.js -o js/chord.min.js
+minify js/chord.js > js/chord.min.js
 rm js/chord.js
 
-cleancss -o css/app.min.css css/app.css
+minify css/app.css > css/app.min.css
 rm css/app.css
 
 HTML_FILES=(index.html)

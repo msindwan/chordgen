@@ -35,13 +35,13 @@
                         </div>
                     </div>
                     <div class="row-container lookup">
-                        <div class="form-control">
+                        <form id="lookup_content" class="form-control">
                             <label>Lookup</label>
-                            <input></input>
+                            <input type="number" min="0" step="1" placeholder="Content ID" id="lookup_content_id" required></input>
                             <label>at</label>
-                            <input></input>
-                            <button id="lookup_content">Search</button>
-                        </div>
+                            <input type="number" min="0" step="1" placeholder="Peer ID" id="lookup_peer_id" required></input>
+                            <button type="submit">Search</button>
+                        </form>
                     </div>
                     <div id="select_peers"></div>
                 </div>
@@ -51,10 +51,21 @@
                         <div class="title"></div>
                         <div class="table"></div>
                     </div>
+                    <h1>Usage</h1>
+                    <p class="usage">Select a value of <code>m</code> and toggle peers to generate a Chord DHT below. Hover over peers to view their finger tables. You can also enter a key and peer to view the lookup path.</p>
                     <svg id="chord_dht" height="600" xmlns:xlink="http://www.w3.org/1999/xlink" width="600"></svg>
                     <!-- App script. -->
                     <script src="/js/chord.js"></script>
                 </div>
+            </div>
+            <div class="footer-nav">
+                <p>
+                    Created and Maintained by <span class="footer-text">Mayank (Max) Sindwani.</span>
+                </p>
+                <ul style="margin: 0;padding: 0;float: right;list-style: none;padding: 20px;">
+                    <li><a href="http://msindwan.bitbucket.org">Portfolio</a></li>
+                    <li><a href="https://bitbucket.org/msindwan/">Bitbucket</a></li>
+                </ul>
             </div>
         </div>
     </body>

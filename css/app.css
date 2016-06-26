@@ -21,8 +21,10 @@ label {
 }
 
 input {
-    width: 50px;
+    width: 70px;
     padding: 8px;
+    float: left;
+    margin-right: 5px;
 }
 
 button {
@@ -160,4 +162,56 @@ button {
 
 .bb-link img {
     width: 100px;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.usage {
+    font-size: 11px;
+    font-family: sans-serif;
+    width: 535px;
+    margin-bottom: -32px;
+}
+
+.footer-nav {
+    /* height: 100px; */
+    border-top: 1px solid #f3f3f3;
+    margin: 13px;
+}
+
+.footer-nav p {
+    font-weight: 100;
+    padding-top: 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.footer-nav .footer-text {
+    color: #42807B;
+    padding-top: 10px;
+    font-weight: bolder;
+}
+
+.footer-nav ul li {
+    font-size: 12px;
+    margin-top: 5px;
+    float: left;
+    padding-right: 15px;
+}
+
+.footer-nav ul li a {
+    color: #50a17e;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.footer-nav ul li a:hover {
+    color: #394e39;
 }
