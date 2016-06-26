@@ -8,6 +8,6 @@ Chordgen is a simple online tool that generates a Chord DHT diagram for fixed va
 
 ### License ###
 
-* MIT License (see the source directory)License: MIT
+* MIT License (see the source directory)
 
 **NOTE: WIP**
