@@ -1,4 +1,12 @@
 #! /bin/bash
+# Chordgen Build Script
+#
+# @Author : Mayank Sindwani
+# @Date   : 2016-08-25
+# @license: MIT
+#
+# Description : Builds the website assets.
+##
 
 TEMP_APP_DIR=.tmp
 TAR_BALL_NAME=chordgen.tar
