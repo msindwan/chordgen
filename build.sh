@@ -13,6 +13,8 @@ TAR_BALL_NAME=chordgen.tar
 EXTS="\(css\|js\|html\|otf\|woff\|ttf\|gif\|jpg\|png\|ico\)"
 VERSION=$( date +%s )
 
+npm install
+
 if [ -d $TEMP_APP_DIR ]; then
   rm -r $TEMP_APP_DIR
 fi
@@ -26,10 +28,10 @@ cp -r js                 $TEMP_APP_DIR/js
 
 cd $TEMP_APP_DIR
 
-minify js/chord.js > js/chord.min.js
+../node_modules/.bin/minify js/chord.js > js/chord.min.js
 rm js/chord.js
 
-minify css/app.css > css/app.min.css
+../node_modules/.bin/minify css/app.css > css/app.min.css
 rm css/app.css
 
 HTML_FILES=(index.html)

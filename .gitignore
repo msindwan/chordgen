@@ -1,2 +1,5 @@
 # Ignore distribution files
 chordgen.tar
+
+# Node
+node_modules
