@@ -9,8 +9,9 @@ Chordgen is a simple online tool that generates a Chord DHT diagram for fixed va
 ### Build Instructions ###
 
 Dependencies:
+
 * Make
-* node + npm
+* Node and npm
 
 Run `make` to build assets. Run `make clean` to clean the distribution files.
 
