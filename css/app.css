@@ -47,6 +47,14 @@ button {
     font-size: 12px;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+    float: right;
+    list-style: none;
+    padding: 20px;
+}
+
 .logo-g {
     color: #277068;
 }
