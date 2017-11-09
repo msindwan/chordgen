@@ -159,29 +159,6 @@ ul {
     padding-bottom: 5px;
 }
 
-.bb-banner {
-    position: absolute;
-    left: -26px;
-    top: -6px;
-    font-family: sans-serif;
-    color: black;
-    font-size: 11px;
-}
-
-.bb-link {
-    position: relative;
-    display: inline-block;
-    margin-left: 30px;
-}
-
-.bb-link:hover span {
-    color: #205081;
-}
-
-.bb-link img {
-    width: 100px;
-}
-
 code {
     padding: 2px 4px;
     font-size: 90%;
